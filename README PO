@@ -1,0 +1,5 @@
+HOW TO RUN
+docker compose up --build -d
+
+HOW TO STOP
+docker compose down
