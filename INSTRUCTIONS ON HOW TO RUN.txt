@@ -4,29 +4,53 @@ Requirements: DOCKER
 
 
 how to install docker
-    Visit https://docs.docker.com/desktop/setup/install/windows-install/
+    1. Visit https://docs.docker.com/desktop/setup/install/windows-install/
 
-    Download and install Docker Desktop.
+    2. Download and install Docker Desktop.
 
-    Follow the installer instructions. Enable WSL 2 if prompted.
+    3. Follow the installer instructions. Enable WSL 2 if prompted.
 
-    Restart your computer if required.
+    4. Restart your computer if required.
 
-    Open Docker Desktop and wait for it to finish starting.
+    5. Open Docker Desktop and wait for it to finish starting.
+
+    IF WSL IS GETTING ERROR
+        RUN 
+            wsl --install or wsl --update
+        
+        THEN CLOSE AND OPEN DOCKER DESKTOP AND WAIT FOR IT TO FINISH STARTING
+    
+    HOW TO RUN
+
+        docker compose up --build -d
+
+    HOW TO STOP
+    
+        docker compose down
+        
 
 for mac:
 
-    Visit https://docs.docker.com/desktop/setup/install/mac-install/
+    1. Visit https://docs.docker.com/desktop/setup/install/mac-install/
 
-    Download Docker Desktop for your Mac's processor:
+    2. Download Docker Desktop for your Mac's processor:
 
     Apple silicon (M-series)
 
     Intel
 
-    Install Docker Desktop by following the instructions.
+    3. Install Docker Desktop by following the instructions.
 
-    Open Docker Desktop and wait for it to start.
+    4. Open Docker Desktop and wait for it to start.
+
+    HOW TO RUN
+
+        docker compose up --build -d
+
+    HOW TO STOP
+    
+        docker compose down
+
 
 
 
