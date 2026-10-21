@@ -11,15 +11,7 @@ Flight::route('GET /', function () {
     echo 'My FlightPHP backend is running!';
 });
 
-// API test route
-Flight::route('GET /api/hello', function () {
-    Flight::json([
-        'success' => true,
-        'message' => 'Hello from FlightPHP!'
-    ]);
-});
 
-// Initialize the Task controller
 $taskController = new TaskController();
 
 // Task API routes

@@ -14,21 +14,17 @@ class TaskController
         $this->taskModel = new Task();
     }
 
-    // Send a JSON response
     private function respond(array $data, int $statusCode = 200): void
     {
         Flight::json($data, $statusCode);
     }
 
-    // GET /tasks
-    // Retrieve all tasks
+
     public function index(): void
     {
-        // Update overdue statuses first
+
         $this->taskModel->markOverdue();
         $this->taskModel->updateDueStatuses();
-
-        // Retrieve the updated task list
         $tasks = $this->taskModel->getAll();
 
         $this->respond([
@@ -37,8 +33,7 @@ class TaskController
         ]);
     }
 
-    // GET /tasks/@id
-    // Retrieve a single task
+
     public function show(int $id): void
     {
         $task = $this->taskModel->getById($id);
@@ -58,8 +53,6 @@ class TaskController
         ]);
     }
 
-    // POST /tasks
-    // Create a task
     public function store(): void
     {
         $data = Flight::request()->data->getData();
@@ -126,8 +119,6 @@ class TaskController
         ], 201);
     }
 
-    // PUT /tasks/@id
-    // Update a task
    public function update(int $id): void
 {
     $existingTask = $this->taskModel->getById($id);
@@ -168,8 +159,6 @@ class TaskController
     ], $updated ? 200 : 500);
 }
 
-    // DELETE /tasks/@id
-    // Delete a task
     public function destroy(int $id): void
     {
         $existingTask = $this->taskModel->getById($id);
@@ -193,8 +182,6 @@ class TaskController
         ], $deleted ? 200 : 500);
     }
 
-    // GET /tasks/search?keyword=website
-    // Search by task name or organization
     public function search(): void
     {
         $keyword = trim(Flight::request()->query['keyword'] ?? '');
@@ -207,8 +194,6 @@ class TaskController
         ]);
     }
 
-    // GET /tasks/status/@status
-    // Filter tasks by status
     public function filterByStatus(string $status): void
     {
         $this->taskModel->markOverdue();
@@ -234,15 +219,4 @@ class TaskController
         ]);
     }
 
-    // GET /tasks/overdue
-    // Retrieve overdue, incomplete tasks
-    // public function overdue(): void
-    // {
-    //     $tasks = $this->taskModel->getOverdue();
-
-    //     $this->respond([
-    //         'success' => true,
-    //         'data' => $tasks
-    //     ]);
-    // }
 }

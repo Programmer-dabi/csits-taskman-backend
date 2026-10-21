@@ -61,26 +61,6 @@ class Task
         ]);
     }
 
-    // Update a task
-    // public function update(int $id, array $data): bool
-    // {
-    //     $sql = "UPDATE tasks
-    //             SET task_name = :task_name,
-    //                 sub_organization = :sub_organization,
-    //                 due_date = :due_date,
-    //                 status = :status
-    //             WHERE id = :id";
-
-    //     $stmt = $this->db->prepare($sql);
-
-    //     return $stmt->execute([
-    //         'id' => $id,
-    //         'task_name' => $data['task_name'],
-    //         'sub_organization' => $data['sub_organization'],
-    //         'due_date' => $data['due_date'],
-    //         'status' => $data['status']
-    //     ]);
-    // }
 
     // Delete a task
     public function delete(int $id): bool
@@ -121,18 +101,6 @@ class Task
         return $stmt->fetchAll();
     }
 
-    // Get overdue tasks that are not completed
-    // public function getOverdue(): array
-    // {
-    //     $sql = "SELECT * FROM tasks
-    //             WHERE due_date < NOW()
-    //               AND status != 'Completed'
-    //             ORDER BY due_date ASC";
-
-    //     $stmt = $this->db->query($sql);
-
-    //     return $stmt->fetchAll();
-    // }
 
         public function markOverdue(): int
     {
