@@ -1,0 +1,34 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: db
+      DB_USERNAME: taskuser
+      DB_PASSWORD: taskpass123
+      DB_DATABASE: csitstaskman
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: csitstaskman
+      MYSQL_USER: taskuser
+      MYSQL_PASSWORD: taskpass123
+      MYSQL_ROOT_PASSWORD: localrootpass
+    ports:
+      - "3307:3306"
+    volumes:
+      - taskman_data:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-plocalrootpass"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+
+volumes:
+  taskman_data:

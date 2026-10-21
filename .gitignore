@@ -1,0 +1,15 @@
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+/vendor/
+
+# Logs
+*.log
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
