@@ -85,22 +85,6 @@ class Task
         return $stmt->fetchAll();
     }
 
-    // Search tasks by name or organization
-    public function search(string $keyword): array
-    {
-        $sql = "SELECT * FROM tasks
-                WHERE task_name LIKE :keyword
-                   OR sub_organization LIKE :keyword
-                ORDER BY due_date ASC";
-
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute([
-            'keyword' => '%' . $keyword . '%'
-        ]);
-
-        return $stmt->fetchAll();
-    }
-
 
         public function markOverdue(): int
     {

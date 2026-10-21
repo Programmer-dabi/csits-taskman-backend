@@ -182,17 +182,7 @@ class TaskController
         ], $deleted ? 200 : 500);
     }
 
-    public function search(): void
-    {
-        $keyword = trim(Flight::request()->query['keyword'] ?? '');
 
-        $tasks = $this->taskModel->search($keyword);
-
-        $this->respond([
-            'success' => true,
-            'data' => $tasks
-        ]);
-    }
 
     public function filterByStatus(string $status): void
     {
